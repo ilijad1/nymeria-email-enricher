@@ -1,0 +1,12 @@
+Flask==1.1.1
+Jinja2==2.11.1
+Flask-Excel==0.0.7
+markupsafe==2.0.1
+itsdangerous==2.0.1
+Werkzeug==2.0.3 
+flask_sqlalchemy
+flask_login
+elasticsearch
+elasticsearch-dsl
+crypto 
+pycryptodome-3.15.0

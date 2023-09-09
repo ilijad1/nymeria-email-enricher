@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Upload CSV | Nymeria Bulk Email Enrichment</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body class="text-center">
+<div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" role="alert">
+          {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    <div class="row" style="padding-top: 200px">
+        <div class="col">
+        </div>
+        <div class="col">
+            <form class="form-signin" action="{{ url_for('csv_enrich.upload_csv') }}" method="POST" enctype="multipart/form-data">
+                <img class="mb-4" src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/Opened_re_i38e.svg" alt=""
+                     width="200" height="200">
+                <h1 class="h3 mb-3 font-weight-normal">Upload Document</h1>
+                <h6 class="h6 mb-3 font-weight-normal">Supported File Formats: <strong>(.csv, .csvz, .tsv .xlsx, .xlsm,
+                    .ods)</strong></h6>
+                <label for="inputDocument" class="sr-only">Choose File...</label>
+                <input type="file" id="inputDocument" class="form-control" name="excel" placeholder="Choose File..." required
+                       autofocus>
+                <div class="checkbox mb-3">
+                    <br>
+                    <label>
+
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Find Emails</button>
+                <p class="mt-5 mb-3 text-muted">&copy; Psyent 2021</p>
+            </form>
+        </div>
+        <div class="col text-left text-small">
+            <div class="container">
+                <h5>
+                    <strong>Steps:</strong>
+                </h5>
+                <p>
+                    1. Choose a comma separated value document (see supported formats).<br>
+                </p>
+                <p>
+                    2. Click <strong>Find Emails</strong>.<br>
+                </p>
+                <p>
+                    3. Wait for the application to process the emails.<br>
+                </p>
+
+                <br>
+                <br>
+                <br>
+
+                <h5>
+                    <strong>Rules:</strong>
+                </h5>
+                <p>
+                    - The application will modify the existing document and return it after processing.
+                </p>
+                <p>
+                    - The column that contains the LinkedIn URLs must be set to the following
+                    name: <strong>linkedinUrl</strong>.
+                </p>
+                <p>
+                    - The column that will hold the emails must be set to the following
+                    name: <strong>email</strong>.
+                </p>
+                <p>
+                    - The order of the columns <strong>does not matter</strong>.
+                </p>
+
+                <h6>
+                    <strong>Example Doc:</strong>
+                </h6>
+                <table class="table table-sm table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">linkedinUrl</th>
+                        <th scope="col">email</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>https://www.linkedin.com/in/john-doe</td>
+                        <td>(empty)</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+</body>
+</html>

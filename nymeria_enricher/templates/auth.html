@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sign In | Nymeria Bulk Email Enrichment</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body class="text-center">
+<div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" role="alert">
+          {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    <div class="row" style="padding-top: 200px">
+        <div class="col">
+        </div>
+        <div class="col">
+            <form class="form-signin" method="POST" action="{{ url_for('auth.auth') }}">
+                <img class="mb-4"
+                     src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/authentication_fsn5.svg"
+                     alt=""
+                     width="200" height="200">
+                <h1 class="h3 mb-3 font-weight-normal">Enter Access Key</h1>
+                <label for="accessKey" class="sr-only">Password</label>
+                <input type="password" name="access_key" id="accessKey" class="form-control" placeholder="Access Key"
+                       required autofocus>
+                <div class="checkbox mb-3">
+                    <br>
+                    <label>
+                        <input type="checkbox" name="remember_me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+                <p class="mt-5 mb-3 text-muted">&copy; Psyent 2021</p>
+            </form>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
